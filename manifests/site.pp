@@ -1,6 +1,7 @@
-node default {
-  file {'/root/README.md':
-    ensure  => file,
-    content => 'This is Puppet content, after change 3',
-  }
+node 'default' {
+        file {'/root/mytest_example-ip.txt':                                      # resource type file and filename
+                ensure  => present,                                               # make sure it exists
+                mode    => 0644,                                                   # file permissions
+                content => "Here is my Public IP Address: ${ipaddress_eth0}.\n",  # note the ipaddress_eth0 fact
+        }
 }
